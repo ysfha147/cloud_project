@@ -64,6 +64,16 @@ is no hand-keyed or downloaded animation.
 - `scripts/encode.sh`: colour grade, vignette and film grain, fades, an
   upscale to 1920×804, and muxing.
 
+## Render
+
+The final render used Cycles on a 4-core CPU:
+- 408 frames at 1280×536
+- 10 adaptive samples with OpenImageDenoise
+- motion blur and depth of field
+
+Each frame took about 33 s, about 3 h 40 min in total. The grade then
+upscales the frames to 1920×804.
+
 ## Rebuild
 
 ```bash
