@@ -98,7 +98,7 @@ def skin_material():
     co = rest_coords(g)
     n1 = g.n("ShaderNodeTexNoise", inputs={"Scale": 18.0, "Detail": 4.0, "Roughness": 0.6})
     g.l(co, n1.inputs["Vector"])
-    base = g.ramp(n1.outputs["Fac"], [(0.35, (0.36, 0.20, 0.13)), (0.65, (0.43, 0.25, 0.165))])
+    base = g.ramp(n1.outputs["Fac"], [(0.35, (0.37, 0.205, 0.13)), (0.65, (0.44, 0.255, 0.165))])
     # pores / micro detail
     n2 = g.n("ShaderNodeTexNoise", inputs={"Scale": 900.0, "Detail": 2.0})
     g.l(co, n2.inputs["Vector"])
@@ -107,7 +107,7 @@ def skin_material():
     p = g.n("ShaderNodeBsdfPrincipled")
     g.l(base.outputs[0], p.inputs["Base Color"])
     p.inputs["Roughness"].default_value = 0.48
-    p.inputs["Subsurface Weight"].default_value = 0.12
+    p.inputs["Subsurface Weight"].default_value = 0.0
     p.inputs["Subsurface Radius"].default_value = (1.0, 0.35, 0.18)
     p.inputs["Subsurface Scale"].default_value = 0.012
     p.inputs["Specular IOR Level"].default_value = 0.45
@@ -278,7 +278,7 @@ def metal_material(name="GalvanizedSteel", color=(0.42, 0.43, 0.44), rough=0.42,
     return mat
 
 
-def chainlink_material(spacing=0.055, wire=0.0028):
+def chainlink_material(spacing=0.055, wire=0.0032):
     """Diamond chain-link mesh from UVs (u along the fence, v up, in metres)."""
     mat, nt = _new("ChainLink")
     if nt is None:
@@ -303,8 +303,8 @@ def chainlink_material(spacing=0.055, wire=0.0028):
     bump = g.n("ShaderNodeBump", inputs={"Strength": 0.8, "Distance": 0.002})
     g.l(hgt, bump.inputs["Height"])
     metal = g.n("ShaderNodeBsdfPrincipled")
-    metal.inputs["Base Color"].default_value = (0.32, 0.33, 0.34, 1)
-    metal.inputs["Metallic"].default_value = 0.75
+    metal.inputs["Base Color"].default_value = (0.2, 0.205, 0.21, 1)
+    metal.inputs["Metallic"].default_value = 0.7
     metal.inputs["Roughness"].default_value = 0.5
     g.l(bump.outputs[0], metal.inputs["Normal"])
     tr = g.n("ShaderNodeBsdfTransparent")

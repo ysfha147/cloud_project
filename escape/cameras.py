@@ -112,7 +112,7 @@ def build_shots(perf, poses, t_end):
 
     return [
         Shot("CamEstablish", 0.0, s1, 85, 4.0, establish, shake=0.12),
-        Shot("CamFence", s1, s2, 32, 2.8, through_fence, shake=0.5),
+        Shot("CamFence", s1, s2, 32, 4.0, through_fence, shake=0.5),
         Shot("CamClimb", s2, s3, 28, 4.0, climb, shake=0.4),
         Shot("CamTop", s3, s4, 32, 2.8, over_top, shake=0.45),
         Shot("CamDrop", s4, s5, 22, 5.0, drop, shake=0.6),

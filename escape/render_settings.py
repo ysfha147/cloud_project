@@ -8,7 +8,7 @@ def apply(scene, width=1280, height=536, samples=24, motion_blur=True, preview=F
     c.device = "CPU"
     c.samples = samples
     c.use_adaptive_sampling = True
-    c.adaptive_threshold = 0.04 if not preview else 0.1
+    c.adaptive_threshold = 0.05 if not preview else 0.1
     c.adaptive_min_samples = min(8, samples)
     c.use_denoising = True
     c.denoiser = "OPENIMAGEDENOISE"
